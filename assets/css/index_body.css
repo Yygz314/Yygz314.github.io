@@ -1,0 +1,15 @@
+nav {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 15px;
+    margin-bottom: 30px;
+    grid-column: 1 / -1;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    justify-content: center;
+}

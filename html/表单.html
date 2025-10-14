@@ -1,0 +1,107 @@
+<!--
+ * @LastEditors: Yygz314 2711859393@qq.com
+ * @LastEditTime: 2025-10-14 23:20:34
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单练习</title>
+</head>
+<body>
+    <h1>3.1 表单概述</h1>
+    <p>
+        表单负责采集和提交用户信息。分为表单标签和表单控件。表单控件分为表单域和按钮。<br/>
+        常见表单域有文本框、密码框、多行文本框、复选框、下拉选择框
+    </p>
+    <h1>3.2 表单标签</h1>
+    <h1>3.3 表单域</h1>
+
+    <h2>3.3.1 单行文本框</h2>
+    <form>
+        <input type="text" name="userName" size="25" maxlength="10" value="请输入用户名" >
+    </form>  
+
+    <h2>3.3.2 密码框</h2>
+    <form>
+        <input type="password" name="userPwd" size="25" maxlength="10" value="请输入密码" >
+    </form>  
+
+    <h2>3.3.3 单选按钮</h2>
+    <form>
+        性别：<input type="radio" name="sex" value="man" checked="checked" />男
+        <input type="radio" name="sex" value="woman" />女<br/>
+    </form> 
+
+    <h2>3.3.4 复选框</h2>
+    <form>
+        爱好：<input type="checkbox" name="hobby" value="music" checked/>音乐
+        <input type="checkbox" name="hobby" value="swim" />游泳
+        <input type="checkbox" name="hobby" value="football" />足球<br/>
+    </form> 
+
+    <h2>3.3.5 文本选择框</h2>
+    <form method="post" enctype="multipart/form-data">
+        请选择上传的头像：<input type='file' accept="image/*" name="'headImage" />
+    </form> 
+
+    <h2>3.3.6 隐藏域</h2>
+    <form>
+        <input type="hidden" name="hiddenData" value="不显示数据" />
+    </form> 
+
+    <h2>3.3.7 多行文本框</h2>
+    <form>
+        <textarea name="个人介绍" rows='6' cols="40" wrap="virtual" >
+    您好！我来自杭州，是一名计算机科学与技术专业应届本科即将毕业的学员。
+    我喜欢音乐、足球和游泳。
+    我很幸运，有一个非常好的朋友，我们在一起学习和生活。
+        </textarea>
+    </form> 
+
+    <h2>3.3.8 列表选项框</h2>
+    <form>
+        请选择国家：
+        <select name="contury">
+            <option >中国</option>
+            <option >美国</option>
+            <option >日本</option>
+            <option >韩国</option>
+            <option >英国</option>
+            <option >法国</option>
+            <option >德国</option>
+            <option >意大利</option>
+            <option >西班牙</option>
+            <option >印度</option>
+            <option >俄罗斯</option>
+        </select>
+    </form> 
+
+    <h1>3.4 按钮控件</h1>
+    <form action="http://www.itshixun.com" metho="post">
+        <input type="submit" value="提交按钮" name="btnSubmit" />
+        <input type="reset" value="重置按钮" name="btnReset" />
+        <input type="button" value="普通按钮" name="btnNormal"
+            onClick="alert('可调用的JavaScript脚本！')"/>
+        <input type="image" src="../assets/image/index/head.png" width="100" />
+    </form>
+
+    <h1>3.5 表单分组</h1>
+    <form>
+        <fieldset>
+            <legend>请选择个人爱好</legend>
+            <input type="checkbox" name="hobby" value="music" />音乐 <br/>
+            <input type="checkbox" name="hobby" value="swim" />游泳 <br/>
+            <input type="checkbox" name="hobby" value="football" />足球 <br/>
+        </fieldset>
+            <br/>
+        <fieldset>
+            <legend>请选择个人性别</legend>
+            <input type="radio" name="sex" value="man" checked="checked" />男
+            <input type="radio" name="sex" value="woman" />女<br/>
+        </fieldset>
+
+    </form>
+</body>
+</html>
