@@ -1,0 +1,31 @@
+<!--
+ * @LastEditors: Yygz314 2711859393@qq.com
+ * @LastEditTime: 2025-10-22 14:12:30
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目展示</title>
+</head>
+<body>
+    <div>
+        <form>
+        CSS ：
+        <select id="htmlSelect">
+            <option value="">-- 选择文件 --</option>
+            <option value="../project/Learn_Basic_CSS_by_Building_a_Cafe_Menu/index1.html">Learn Basic CSS by Building a Cafe  Menu</option>">
+        </select>
+        </form>
+        
+    <div>
+
+    <script>
+        document.getElementById("htmlSelect").addEventListener("change", function() {
+            if(this.value) location.href = this.value;
+        });
+    </script>
+</body>
+
+</html>
