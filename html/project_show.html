@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: Yygz314 2711859393@qq.com
- * @LastEditTime: 2025-10-22 14:28:45
+ * @LastEditTime: 2025-10-28 20:06:06
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,24 +9,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>项目展示</title>
     <link rel="stylesheet" href="../assets/css/index_body.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .topp{
+            background-image: url("../assets/image/index/bg3.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            margin: 0;
+            padding: 0;
+        }
+         nav{
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 50%;
+            margin-left: 0px;
+            position: absolute;
+        } 
+        nav ul{
+            list-style: none;
+        }
+        nav ul li{
+            margin: 0 10px;
+        }
+        nav ul li a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="./index.html">首页</a></li>
-            <li><a href="#">技术文章</a></li>
-            <li><a href="#">学习笔记</a></li>
-            <li><a href="./project_show.html" target="_blank">项目展示</a></li>
-            <li><a href="#">彩蛋</a></li>
-            <li><a href="#">关于我</a></li>
-        </ul>
-    </nav>
+    <div class="topp">
+        <nav>
+            <ul>
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="#">技术文章</a></li>
+                <li><a href="#">学习笔记</a></li>
+                <li><a href="./project_show.html" target="_blank">项目展示</a></li>
+                <li><a href="#">彩蛋</a></li>
+                <li><a href="#">关于我</a></li>
+            </ul>
+        </nav>
+    </div>
     <div>
         <form>
         CSS ：
         <select id="htmlSelect">
             <option value="">-- 选择文件 --</option>
-            <option value="../project/Learn_Basic_CSS_by_Building_a_Cafe_Menu/index1.html">Learn Basic CSS by Building a Cafe  Menu</option>">
+            <option value="../project/Learn_Basic_CSS_by_Building_a_Cafe_Menu/index1.html">Learn Basic CSS by Building a Cafe Menu</option>">
+            <option value="../project/honest_Chinese_medicine/Chinese_medicine.html">Learn Chinese_medicine</option>
         </select>
         </form>
         

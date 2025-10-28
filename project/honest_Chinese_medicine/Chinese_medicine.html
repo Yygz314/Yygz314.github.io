@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>翻牌查询清廉中医药材</title>
+  <style>
+    body { background: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    h2 { color: #1769aa; margin: 24px 0 8px 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 120px);
+      grid-template-rows: repeat(3, 160px);
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .scene {
+      width: 120px; height: 160px; perspective: 600px;
+    }
+    .card {
+      width: 120px; height: 160px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(.4,2,.6,1);
+      cursor: pointer;
+    }
+    .card.flipped { transform: rotateY(180deg); }
+    .card.selected {
+      box-shadow: 0 0 0 6px #ff9800, 0 0 16px 8px #ffe0b2, 0 8px 32px rgba(0,0,0,0.18);
+      border-radius: 12px;
+      transform: scale(1.08) rotateY(0deg) !important;
+      z-index: 2;
+      transition: box-shadow 0.2s, transform 0.2s, border-radius 0.2s;
+      animation: bounce 0.3s;
+    }
+    @keyframes bounce {
+      0% { transform: scale(1.08) translateY(0); }
+      40% { transform: scale(1.12) translateY(-10px); }
+      70% { transform: scale(1.05) translateY(2px); }
+      100% { transform: scale(1.08) translateY(0); }
+    }
+    .card-face {
+      position: absolute; width: 100%; height: 100%;
+      backface-visibility: hidden; border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-family: sans-serif;
+    }
+    .front { background: linear-gradient(135deg,#43c6ac,#f8ffae); color: #1769aa; }
+    .back { background: #fffbe7; color: #e67e22; transform: rotateY(180deg); }
+    .card-face.back img {
+      z-index: 1;
+    }
+    .card.flipped .card-face.back img {
+      z-index: 2;
+      filter: none;
+      transition: none;
+    }
+    @keyframes bigPop {
+      0% {
+        transform: translate(-50%,-50%) scale(0.7);
+        filter: blur(8px) brightness(1.2);
+      }
+      100% {
+        transform: translate(-50%,-50%) scale(1.1);
+        filter: blur(0) brightness(1);
+      }
+    }
+    #randomBtn {
+      padding: 10px 32px; font-size: 18px; border: none; border-radius: 8px;
+      background: linear-gradient(90deg, #43c6ac 60%, #f8ffae 100%);
+      color: #1769aa; font-weight: 600; cursor: pointer;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.12);
+      margin-bottom: 10px;
+    }
+    #randomBtn:active { background: linear-gradient(90deg, #43a047 60%, #f8ffae 100%); }
+  </style>
+</head>
+<body>
+  <h2 id="mainTitle">请翻牌，查询清廉中医药材</h2>
+  <div class="grid" id="cardGrid"></div>
+  <button id="randomBtn">随机翻牌</button>
+  <div id="resultModal" style="display:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.65);z-index:10000;align-items:center;justify-content:center;flex-direction:column;">
+    <div style="background:#fffbe7;padding:32px 40px 24px 40px;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center;position:relative;max-width:90vw;">
+      <img id="modalImg" src="" alt="中医药材" style="width:320px;max-width:80vw;border-radius:16px;box-shadow:0 4px 16px #eecb8b;margin-bottom:18px;">
+      <div id="modalName" style="font-size:1.6rem;color:#b8860b;font-weight:bold;margin-bottom:8px;"></div>
+      <div id="modalDesc" style="font-size:1.1rem;color:#333;margin-bottom:18px;"></div>
+      <button id="closeModalBtn" style="padding:8px 32px;font-size:1.1rem;border:none;border-radius:8px;background:linear-gradient(90deg,#ffe066,#fbc531);color:#b8860b;font-weight:bold;cursor:pointer;">已了解</button>
+    </div>
+  </div>
+  <script>
+    const grid = document.getElementById('cardGrid');
+    const cards = [];
+    const imgList = [
+     
+      './Chinese_medicine/baizhi.webp',
+      './Chinese_medicine/gancao.jpg',
+      './Chinese_medicine/huanglian.avif',
+      './Chinese_medicine/juhua.jpg',
+      './Chinese_medicine/kushen.jpg',
+      './Chinese_medicine/lianzixin.jpg',
+      './Chinese_medicine/maidong.avif',
+      './Chinese_medicine/qingdai.jpg',
+      './Chinese_medicine/zhuru.jpg'
+    ];
+    const frontColors = [
+      'linear-gradient(135deg,#a8edea,#fed6e3)',
+      'linear-gradient(135deg,#fbc2eb,#a6c1ee)',
+      'linear-gradient(135deg,#fceabb,#f8b500)',
+      'linear-gradient(135deg,#d4fc79,#96e6a1)',
+      'linear-gradient(135deg,#fff1eb,#ace0f9)',
+      'linear-gradient(135deg,#f9f586,#ffecd2)',
+      'linear-gradient(135deg,#f6d365,#fda085)',
+      'linear-gradient(135deg,#fbc2eb,#f7ff00)',
+      'linear-gradient(135deg,#c2ffd8,#465efb)'
+    ];
+    const borderColors = [
+      '#7ed6df', // 浅蓝
+      '#b2a4ff', // 淡紫
+      '#ffe066', // 柠檬黄
+      '#a3f7bf', // 浅绿
+      '#ace0f9', // 天蓝
+      '#fff6a9', // 米黄
+      '#ffd6a5', // 橙粉
+      '#f7ff00', // 亮黄
+      '#c2ffd8'  // 薄荷绿
+    ];
+    const feiziNames = [
+      '白芷', '甘草', '黄连', '菊花', '苦参', '莲子心', '麦冬', '青黛', '竹茹'
+    ];
+    const feiziDescs = [
+      '辛温芳香，祛风燥湿。喻素心如玉、涤荡污浊、通明守真。',
+      '甘平调和，解毒缓急。喻甘而不谄、持中致公、化毒为民。',
+      '苦寒泻火，燥湿解毒。喻苦砺清节、涤邪守正、儆省无声。',
+      '甘苦微寒，平肝明目。喻霜骨铮然、淡泊明志、洞鉴秋毫。',
+      '苦寒沉降，杀虫利尿。喻寒苦砺志、祛蠹除弊、沉潜守拙。',
+      '苦寒清心，安神涩精。喻苦心守真、清神祛妄、固本培元。',
+      '甘寒养阴，润肺除烦。喻莹润守洁、滋而不腻、静水深流。',
+      '咸寒凉血，解毒消斑。喻沉碧见性、涤瑕荡秽、静敛锋芒。',
+      '甘微寒，化痰止呕。喻虚怀有容、疏瀹污浊、柔韧守直。'
+    ];
+    // 生成卡片，正面显示中医药材名，背面为中医药材照片
+    grid.innerHTML = '';
+    cards.length = 0;
+    for(let i=0;i<9;i++) {
+      const scene = document.createElement('div');
+      scene.className = 'scene';
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.dataset.idx = i;
+      card.innerHTML = `<div class="card-face front" style="background:${frontColors[i]};color:#b8860b;border:2px solid gold;font-weight:bold;font-size:1.3rem;letter-spacing:2px;box-shadow:0 0 8px #eecb8b;">${feiziNames[i]}</div><div class="card-face back"><div style='position:relative;width:100%;height:100%;'><img src="${imgList[i]}" alt="妃子" style="width:100%;height:100%;object-fit:cover;border-radius:12px;background:#fff;"><span style='position:absolute;right:8px;bottom:8px;font-size:0.9rem;color:#fff;background:rgba(184,134,11,0.7);padding:2px 8px;border-radius:8px;'>清廉中药</span></div></div>`;
+      scene.appendChild(card);
+      grid.appendChild(scene);
+      cards.push(card);
+    }
+    let animating = false;
+    function setSelected(idx) {
+      cards.forEach((c, i) => {
+        c.classList.remove('selected');
+        c.style.boxShadow = '';
+      });
+      const card = cards[idx];
+      card.classList.add('selected');
+      card.style.boxShadow = `0 0 0 6px ${borderColors[idx]}, 0 0 16px 8px ${borderColors[idx]}55, 0 8px 32px rgba(0,0,0,0.18)`;
+    }
+    // 翻牌后弹窗逻辑
+    const resultModal = document.getElementById('resultModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalName = document.getElementById('modalName');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    closeModalBtn.onclick = () => { resultModal.style.display = 'none'; };
+    // 修改翻牌逻辑，翻开后弹窗显示中医药材信息
+    document.getElementById('randomBtn').onclick = async function() {
+      if(animating) return;
+      animating = true;
+      cards.forEach(c=>{c.classList.remove('flipped','selected');c.style.boxShadow='';});
+      let lastIdx = 0;
+      let used = new Set();
+      const jumpTimes = 9 + Math.floor(Math.random()*6);
+      for(let i=0;i<jumpTimes;i++) {
+        let available = cards.map((_, idx) => idx).filter(idx => !used.has(idx));
+        if(available.length === 0) {
+          used.clear();
+          available = cards.map((_, idx) => idx);
+        }
+        const idx = available[Math.floor(Math.random()*available.length)];
+        setSelected(idx);
+        used.add(idx);
+        lastIdx = idx;
+        await new Promise(r=>setTimeout(r, 90 + i*10));
+      }
+      cards[lastIdx].classList.remove('selected');
+      cards[lastIdx].style.boxShadow = '';
+      setTimeout(() => {
+        cards[lastIdx].classList.add('flipped');
+        // 弹窗展示中医药材信息
+        modalImg.src = imgList[lastIdx];
+        modalName.textContent = feiziNames[lastIdx];
+        modalDesc.textContent = `${feiziNames[lastIdx]}，${feiziDescs[lastIdx]}`;
+        resultModal.style.display = 'flex';
+      }, 300);
+      animating = false;
+    };
+  </script>
+</body>
+</html>
