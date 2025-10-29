@@ -1,0 +1,403 @@
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box; 
+			}
+			#bg{
+				position: fixed; 
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100vh;
+				background-image: url(./sorce/HB.jpg);
+				background-size: cover;
+				/* background-position: top center; */
+				background-repeat:no-repeat;
+				z-index: -1;
+			}
+			.title>a{
+				position: absolute;
+				left:102px;
+				top:138px;
+				width:630px;
+				
+				font-family: "Microsoft YaHei", "SimHei", sans-serif;
+				font-size: 2.5rem; 
+				font-weight: bold; 
+				
+				background: linear-gradient(135deg, #4fc3f7, #e0f7fa); 
+				-webkit-background-clip: text; 
+				color: transparent; 
+				
+				text-shadow: 
+				0 2px 4px rgba(0, 130, 255, 0.3), 
+				1px 1px 2px rgba(255, 255, 255, 0.8); 
+				margin: 20px 0; /* 上下间距 */
+				padding: 10px 15px; /* 内边距 */
+				
+				/* 边框装饰*/
+				/* border-bottom: 3px solid rgba(173, 216, 230, 0.7);  */
+				display: inline-block;
+				cursor: pointer;
+			}
+			.t_name{
+				font-size:48px;
+				text-align: center;
+				margin-top: 20px;
+			}
+			.t_2015{
+				color:#636262;
+			}
+			.h_img{
+				position:absolute;
+				left:102px;
+				top:269px;
+				width:424px;
+				height:595px;
+			}
+			.h_img:hover{
+				border:solid 3px #666666;
+			}
+			.content{
+				position:absolute;
+				left:576px;
+				top:270px;
+				width:1250px;
+				height:594px;
+				background-color: rgba(142, 133, 112, 0.43); 
+			}
+			/* .content:hover{
+				background-color: rgba(142, 133, 112, 0.8);
+			} */
+			.c_info{
+				position:absolute;
+				left:34px;
+				top:40px;
+				width:1182px;
+				height:540px;
+				font-size:40px;
+				line-height:60px;
+				opacity:1;
+			}
+			a:link{
+				text-decoration: none;
+			}
+			.content>a:visited{
+				color: #2D2D30;
+			}
+			/* 想看、看过按钮功能实现 */
+			/* 隐藏对话框的复选框 */
+			#want_watch {
+				display: none;
+			}
+			#want_comment {
+				display: none;
+			}
+			.container{
+				position: absolute;
+				left:102px;
+				top:880px;
+				max-width:176px;
+				max-height:88px;
+				/* background-color: rgba(142, 133, 112, 0.2);  */
+				text-align: center;
+			}
+			/* 打开对话框的按钮 */
+			.wt_btn {
+				display: inline-block;
+				padding: 16px 40px;
+				background: #FEBD3F;
+				color: white;
+				font-size: 40px;
+				font-weight: bold;
+				border: none;
+				border-radius: 50px;
+				cursor: pointer;
+				box-shadow: 0 6px 20px rgba(255,107,107,0.5);
+				transition: all 0.3s ease;
+			}
+
+			.wct_btn {
+				display: inline-block;
+				position: absolute;
+				right: 20px;
+				top: 10px;
+				padding: 16px 40px;
+				background: #FEBD3F;
+				color: white;
+				font-size: 30px;
+				font-weight: bold;
+				border: none;
+				border-radius: 30px;
+				cursor: pointer;
+				box-shadow: 0 6px 20px rgba(255,107,107,0.5);
+				transition: all 0.3s ease;
+			}
+			
+			.wt_btn:hover {
+				background: #ff5252;
+				transform: translateY(-3px);
+				box-shadow: 0 8px 25px rgba(255,107,107,0.7);
+			}
+			.wct_btn:hover {
+				background: #ff5252;
+				transform: translateY(-3px);
+				box-shadow: 0 8px 25px rgba(255,107,107,0.7);
+			}
+			/* 对话框遮罩层 */
+			.dialog-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.7);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.3s ease;
+				z-index: 1000;
+			}
+			
+			/* 对话框容器 */
+			.dialog-container {
+				background: white;
+				border-radius: 12px;
+				box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+				width: 90%;
+				max-width: 500px;
+				overflow: hidden;
+				transform: scale(0.8);
+				transition: transform 0.4s ease;
+			}
+			
+			/* 对话框头部 */
+			.dialog-header {
+				background: linear-gradient(to right, #3498db, #2ecc71);
+				color: white;
+				padding: 20px;
+				text-align: center;
+				position: relative;
+			}
+			
+			.dialog-title {
+				font-size: 1.8rem;
+				font-weight: 600;
+				margin: 0;
+			}
+			
+			/* 关闭按钮 */
+			.close-btn {
+				position: absolute;
+				top: 3px;
+				right: 20px;
+				font-size: 1.8rem;
+				color: white;
+				background: none;
+				border: none;
+				cursor: pointer;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transition: all 0.2s ease;
+			}
+			
+			.close-btn:hover {
+				background: rgba(255,255,255,0.2);
+			}
+			/* 对话框内容 */
+			.dialog-content {
+				padding-top: 20px;
+				padding-bottom: 20px;
+				padding-left: 150px;
+				font-size: 1.2rem;
+				line-height: 1.5;
+				text-align: left;
+			}
+			/* 对话框底部 */
+			.dialog-footer {
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+				gap: 15px;
+				background: #f8f9fa;
+				border-top: 1px solid #eee;
+			}
+			
+			.dialog-btn {
+				padding: 12px 30px;
+				border-radius: 50px;
+				border: none;
+				font-size: 1rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.2s ease;
+			}
+			
+			.primary-btn {
+				background: #3498db;
+				color: white;
+			}
+			
+			.secondary-btn {
+				background: #e0e0e0;
+				color: #555;
+			}
+			
+			.dialog-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+			}
+			/* 当复选框被选中时的样式 */
+			#want_watch:checked ~ .dialog-overlay {
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			#want_watch:checked ~ .dialog-overlay .dialog-container {
+				transform: scale(1);
+			}
+
+			#want_comment:checked ~ .dialog-overlay {
+				opacity: 1;
+				visibility: visible;
+			}
+			
+			#want_comment:checked ~ .dialog-overlay .dialog-container {
+				transform: scale(1);
+			}
+
+			/* 剧情简介 */
+			.story{ 
+				position: absolute;
+				left:102px;
+				top:1000px;
+				width:1724px;
+				height: auto;
+				background-color: rgba(142, 133, 112, 0.43);
+				font-size:32px;
+			}
+			h2{
+				font-size:40px;
+				color:#023103;
+				margin:20px;
+			}
+			hr{
+				margin:20px;
+				border:1.5px solid #023103;
+			}
+			.s_content{
+				display: block;
+				margin:20px;
+			}
+			.pepole{ 
+				position: absolute;
+				left:102px;
+				top:1480px;
+				width:1724px;
+				height: auto;
+				background-color: rgba(142, 133, 112, 0.9);
+				font-size:32px;
+			}
+			.story:hover{
+				background-color: rgba(142, 133, 112, 0.9);
+			}
+			th>img{
+				margin-top:20px;
+				margin-left:55px;
+				width: auto;
+				height: 313px; 
+			}
+			th img:hover{
+				transform: scale(1.1);
+			}
+			tr{
+				text-align: center;
+			}
+			.tr_job{
+				color:#422256;
+			}
+			.comment{
+				list-style: none;
+				position: absolute;
+				left:102px;
+				top:2100px;
+				width:1724px;
+				height: auto;	
+				background-color: rgba(142, 133, 112, 0.8); 
+				/* background-color:#F6BEC8; */
+			}
+			.user_star{
+				margin:20px;
+				color: #f90; /* 橙色（符合原始星星颜色） */
+      			font-size: 25px; /* 星星稍大，更突出 */
+			}
+			.comment>li{
+				margin:20px;
+				font-size: 25px;
+			}
+			.user_img{
+				margin-left: 20px;
+				border-radius: 50%;
+				height: 50px;
+				width: 50px;
+			}
+			.user_name{
+				/* margin:20px; */
+				color:#422256;
+			}
+			.watched{
+				margin:20px;
+			}
+			.user_time{
+				margin:20px;
+				color:rgb(45, 45, 45);
+			}
+			.user_comment{
+				margin:20px;
+				line-height: 1.6;
+			}
+			.comment-content{
+				margin:20px;	
+			}
+			li>hr{
+				margin:20px;
+				border:1px solid #035105;
+			}
+			.comment>li:hover{
+				background-color: rgba(142, 133, 112, 0.9);
+				cursor: pointer;
+			}
+			.star-rating{
+				margin:20px;
+				display:inline-flex;
+				flex-direction: row-reverse;	/*反转顺序*/
+				justify-content:flex-end;	/*左对齐*/
+			}
+			.star-rating input{
+				display:none;
+			}
+			.star-rating label{
+				font-size:40px;
+				color:#ddd;
+				cursor:pointer;
+				transition: color 0.3s ease;	/*颜色渐变效果*/
+				padding:0 8px;
+				position:relative;
+				text-shadow:1px 1px 3px rgba(0,0,0,0.2);
+			}
+			.star-rating label:hover,
+			.star-rating label:hover ~ label,
+			.star-rating input:checked + label,
+			.star-rating input:checked + label ~ label {
+				color:#FFD700;
+				text-shadow:0 0 10px rgb(255,215,0,0.7);
+			}
+			.star-rating label:hover {
+				transform:scale(1.2);
+			}
