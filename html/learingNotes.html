@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习笔记</title>
+</head>
+<body>
+<div class="container">
+        <form>
+        数据结构 ：
+        <select id="data_structure_Select">
+            <option value="">-- 选择文件 --</option>
+            <option value="../learningNotes/data_structure/problem.html">problem</option>">
+        </select>
+        <br />
+    <div>
+
+    <script>
+        document.getElementById("data_structure_Select").addEventListener("change", function() {
+            if(this.value) location.href = this.value;
+        });
+    </script>
+</body>
+</html>
