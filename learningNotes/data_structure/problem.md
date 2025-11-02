@@ -316,7 +316,7 @@ int main(){
 
 
 
-![430b3dd17a777d380342e5ad208e1d12](D:/Program Files/typora/Typora/picture/430b3dd17a777d380342e5ad208e1d12-1762065598749-4.png)
+![430b3dd17a777d380342e5ad208e1d12](../sources/430b3dd17a777d380342e5ad208e1d12.png)
 
 > ​	根据题目意思，两个线性表的长度不确定且初始状态下不知道。合并规则为首先两线性表一次合并每一位的元素，当其中一个线性表所有元素已经合并完后，在链表尾部继续放入另一线性表所有元素。
 >
@@ -350,7 +350,7 @@ void MergerList_L(LinkList &La,LinkList &Lb,LinkList &Lc){
 
 
 
-![4374cc705c559fa1a38b0eb7a47ca972](D:/Program Files/typora/Typora/picture/4374cc705c559fa1a38b0eb7a47ca972-1762065608879-6.png)
+![4374cc705c559fa1a38b0eb7a47ca972](../sources/4374cc705c559fa1a38b0eb7a47ca972.png)
 
 >归并排序。
 
@@ -522,7 +522,7 @@ Status Locate_DuL(DuLinkList &L, ElemType x) {
 
 ## 实验五
 
-![image-20251028141034380](D:/Program Files/typora/Typora/picture/image-20251028141034380.png)
+![image-20251028141034380](../sources/image-20251028141034380.png)
 
 ![image-20251102135857825](../sources/image-20251102135857825.png)
 
