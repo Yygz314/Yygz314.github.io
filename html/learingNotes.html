@@ -1,3 +1,7 @@
+<!--
+ * @LastEditors: Yygz314 2711859393@qq.com
+ * @LastEditTime: 2025-11-12 21:39:56
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,16 +12,27 @@
 <body>
 <div class="container">
         <form>
-        数据结构 ：
-        <select id="data_structure_Select">
-            <option value="">-- 选择文件 --</option>
-            <option value="../learningNotes/data_structure/problem.html">problem</option>">
-        </select>
-        <br />
+            数据结构 ：
+            <select id="data_structure_Select">
+                <option value="">-- 选择文件 --</option>
+                <option value="../learningNotes/data_structure/problem.html">problem</option>">
+            </select>
+            <br />
+            web前端：
+            <select id="web_front_end_Select">
+                <option value="">-- 选择文件 --</option>
+                <option value="../learningNotes/web_front_end/web_homework_1/index.html">web_homework_1</option>">
+                <option value="../learningNotes/web_front_end/web_homework_2/index.html">web_homework_2</option>">
+            </select>
+            <br />
+        </form>
     <div>
 
     <script>
         document.getElementById("data_structure_Select").addEventListener("change", function() {
+            if(this.value) location.href = this.value;
+        });
+        document.getElementById("web_front_end_Select").addEventListener("change", function() {
             if(this.value) location.href = this.value;
         });
     </script>

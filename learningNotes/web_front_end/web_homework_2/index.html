@@ -1,0 +1,887 @@
+<!--
+ * @LastEditors: Yygz314 2711859393@qq.com
+ * @LastEditTime: 2025-11-12 21:37:07
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影视网站前台模板页设计</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class = "box">
+        <div class="header">
+            <div class="nav">
+                <img src="./sorce/logo1.png" alt="logo" width="100px">
+                <ul id="nav-list" dtat-navs="0">
+                    <li>首页</li>
+                    <li>电影</li>
+                    <li>电视剧</li>
+                    <li>短剧</li>
+                    <li>社区</li>
+                </ul>
+                <div id="serch-box">
+                    <input type="text" id="serch-text" placeholder="搜索">
+                    <button id="serch-btn"></button>
+                </div>
+                <div class="container">
+                    <input type="checkbox" id="want_watch">
+                    <label for="want_watch" class="wt_btn">登 录</label>
+                    <!-- 对话框 -->
+                    <div class="dialog-overlay">
+                        <div class="dialog-container">
+                            <div class="dialog-header">
+                                <label for="want_watch" class="close-btn">×</label>
+                                <h3 class="dialog-title">用户登录</h3> <!-- 补充标题，更清晰 -->
+                            </div>
+                            <div class="dialog-content">
+                                用户名：<input type="text" name="nickname" id="nickName" value="" placeholder="请输入用户名">
+                                <br><br>
+                                密码：<input type="password" name="password" id="password" placeholder="请输入密码">
+                            </div>
+                            <div class="dialog-footer">
+                                <label for="want_watch" class="dialog-btn secondary-btn">取消</label>
+                                <label for="want_watch" class="dialog-btn primary-btn">确定</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main">
+            <div class="left">
+                <h2>类型：</h2>
+                <table>
+                    <tr>
+                        <td>剧情</td>
+                        <td>喜剧</td>
+                        <td>短片</td>
+                        <td>爱情</td>
+                    </tr>
+                    <tr>
+                        <td>动作</td>
+                        <td>惊悚</td>
+                        <td>恐怖</td>
+                        <td>动画</td>
+                    </tr>
+                    <tr>
+                        <td>犯罪</td>
+                        <td>冒险</td>
+                        <td>家庭</td>
+                        <td>悬疑</td>
+                    </tr>
+                    <tr>
+                        <td>奇幻</td>
+                        <td>科幻</td>
+                        <td>战争</td>
+                        <td>更多</td>
+                    </tr>
+                </table>
+                <h2>国家/地区：</h2>
+                <table>
+                    <tr>
+                        <td>中国</td>
+                        <td>美国</td>
+                        <td>日本</td>
+                        <td>法国</td>
+                    </tr>
+                    <tr>
+                        <td>英国</td>
+                        <td>中国香港</td>
+                        <td>意大利</td>
+                        <td>德国</td>
+                    </tr>
+                    <tr>
+                        <td>韩国</td>
+                        <td>加拿大</td>
+                        <td>俄罗斯</td>
+                        <td>更多</td>
+                    </tr>
+                </table>
+                <h2>年代：</h2>
+                <table>
+                    <tr>
+                        <td>2025年</td>
+                        <td>2024年</td>
+                        <td>2023年</td>
+                        <td>2022年</td>
+                    </tr>
+                    <tr>
+                        <td>2021年</td>
+                        <td>2020年</td>
+                        <td>2019年</td>
+                        <td>2018年</td>
+                    </tr>
+                    <tr>
+                        <td>2017年</td>
+                        <td>2016年</td>
+                        <td>2015年</td>
+                        <td>2014年</td>
+                    </tr>
+                    <tr>
+                        <td>2013年</td>
+                        <td>2012年</td>
+                        <td>2011年</td>
+                        <td>2010年</td>
+                    </tr>
+                    <tr>
+                        <td>2009年</td>
+                        <td>2008年</td>
+                        <td>2007年</td>
+                        <td>更多</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="center">
+                <div class="hw2_markdown">
+                    <h1>影视网站前台模板页设计思路</h1>
+                    <p>首先需要对网页进行布局，本网页采用DIV+CSS布局，将网页分为头部、主体和尾部三部分。</p>
+                    <h2>1.总体布局划分</h2>
+                    <blockquote>·如下图所示，我们首先用div标签写出网页5部分布局，HTML代码如下：</blockquote>
+                    <textarea name="html" id="bolog">
+    <body>
+        <div class = "box">
+            <div class="header">
+                <div class="nav">
+                    导航栏
+                </div>
+                页首
+            </div>
+            
+            <div class="main">
+                <div class="left">
+                    左侧内容
+                </div>
+                <div class="center">
+                        中间内容
+                </div>
+                <div class="right hide-scrollbar">
+                    右侧内容
+                </div>
+            </div>
+            <div class="footer">
+                <p>页脚</p>
+            </div>
+        </div>
+    </body>
+                    </textarea>
+                    <blockquote>·为了能清晰预览出我们的布局效果，我们给header放上背景图片，添加nav导航栏，给main和foot添加背景颜色等。<br>
+                    ·整体效果如下图：</blockquote>
+                    <img src="./sorce/body1.png" alt="DIV+CSS布局" class="center-img">
+                    <blockquote>·css代码如下：</blockquote>
+                    <textarea name="html" id="bolog">
+    <style>
+        body{
+            margin:0px;
+            padding:0px;
+        }
+        a{
+            text-decoration: none;
+        }
+        .box{
+            width:100%;
+            height:auto;
+        }
+        .header{
+            width:100%;
+            height:400px;
+            background-image:url(./sorce/header.png);
+            background-size: 100% 400px;
+            opacity: 0.8;
+        }
+        .nav{
+            width:100%;
+            height:70px;
+            background-color:rgb(255,255,255,0); 
+        }
+        .nav:hover{
+            background-color:rgb(255,255,255,0.2);
+            
+        }
+        .nav img{
+            margin-left: 160px;
+            margin-top: 4px;
+            display: inline-block;
+            width:100px;
+            height:47px;
+            object-fit:cover;
+        }
+
+        .main{
+            width:100%;
+            max-height: 1000px;
+        }
+        .main .left{
+            float:left;
+            width:20%;
+            height:1000px;
+            overflow-y:auto;
+            overflow-x: hidden;
+            background-color: #f6bec8;
+        }
+        .main .center{
+            float:left;
+            width:60%;
+            height:1000px;
+            overflow-y:hidden;
+            overflow-x: hidden;
+            background-color: #AED0EE;
+        }
+        .main .right{
+            float:left;
+            width:20%;
+            height:1000px;
+            overflow-y:auto;
+            overflow-x: hidden;
+            background-color: #f6bec8;
+            text-align: center;
+        }
+        .footer{
+            clear: both;
+            width:100%;
+            height:auto;
+            background-color: #000000;
+        }
+        .footer p{
+            color: #ffffff;
+            text-align: center;
+            line-height: 20px;
+        }
+    </style>
+                    </textarea>
+                    <h2>2.导航栏</h2>
+                    <blockquote>首先看最终效果：</blockquote>
+                    <img src="./sorce/nav.png" alt="导航栏" class="center-img">
+                    <blockquote>
+                        ·我们使用img标签引入影院网站logo图片；<br>
+                        ·使用无序列表ul-li标签实现导航栏；<br>
+                        ·用单行文本框和搜索按钮实现搜索功能；<br>
+                        ·用复选框和表单语义化关联标签实现用户登录功能；
+                    </blockquote>
+                    <blockquote>·HTML代码如下：</blockquote>
+                    <textarea name="html" id="bolog">
+    <div class="header">
+        <div class="nav">
+            <img src="./sorce/logo1.png" alt="logo" width="100px">
+            <ul id="nav-list" dtat-navs="0">
+                <li>首页</li>
+                <li>电影</li>
+                <li>电视剧</li>
+                <li>短剧</li>
+                <li>社区</li>
+            </ul>
+            <div id="serch-box">
+                <input type="text" id="serch-text" placeholder="搜索">
+                <button id="serch-btn"></button>
+            </div>
+            <div class="container">
+                <input type="checkbox" id="want_watch">
+                <label for="want_watch" class="wt_btn">登 录</label>
+                <!-- 对话框 -->
+                <div class="dialog-overlay">
+                    <div class="dialog-container">
+                        <div class="dialog-header">
+                            <label for="want_watch" class="close-btn">×</label>
+                            <h3 class="dialog-title">用户登录</h3> <!-- 补充标题，更清晰 -->
+                        </div>
+                        <div class="dialog-content">
+                            用户名：<input type="text" name="nickname" id="nickName" value="" placeholder="请输入用户名">
+                            <br><br>
+                            密码：<input type="password" name="password" id="password" placeholder="请输入密码">
+                        </div>
+                        <div class="dialog-footer">
+                            <label for="want_watch" class="dialog-btn secondary-btn">取消</label>
+                            <label for="want_watch" class="dialog-btn primary-btn">确定</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                    </textarea>
+                    <blockquote>·CSS代码如下：</blockquote>
+                    <textarea name="html" id="bolog">
+        #nav-list{
+            position:relative;
+            top:5px;
+            display:inline-block;
+            margin-left: 0; 
+        }
+        #nav-list li{
+            display:inline-block;
+            margin-left:30px;
+            margin-top:0px;
+            font-size:20px;
+            color:#FFFFFF; /* 导航文字纯白，高对比度 */
+            cursor:pointer;
+            transition: color 0.2s ease;
+        }
+        #nav-list li:hover{
+            color: #D4AF37; /* hover时变成复古金 */
+        }
+        #serch-box{
+            display:inline-block;
+            margin-left:100px;
+            vertical-align:middle;
+        }
+        #serch-text{
+            width:200px;
+            height:30px;
+            border-radius: 50px; 
+            border: none;
+            outline: none;
+            padding-left: 15px;
+            vertical-align:middle;
+            background-color: #2C3E50; /* 搜索框深色背景 */
+            color: #E0E0E0; /* 搜索文字浅灰 */
+        }
+        #serch-text::placeholder{
+            color: #95A5A6; /* 占位符浅灰 */
+        }
+        #serch-btn{
+            width:30px;
+            height:30px;
+            border-radius: 50px; 
+            border: none;
+            outline: none;
+            background-color: #D4AF37; /* 搜索按钮复古金 */
+            background-image: url(./sorce/serch.png);
+            background-size: 20px 20px;
+            background-position: center;
+            background-repeat: no-repeat;
+            vertical-align:middle;
+            cursor:pointer;
+            transition: background-color 0.2s ease;
+        }
+        #serch-btn:hover{
+            background-color: #E8C870; /* 按钮hover浅金 */
+        }
+        
+        #want_watch {
+            display: none;
+        }
+        #want_comment {
+            display: none;
+        }
+        .container{
+            display: inline-block;
+            text-align: center;
+        }
+        /* 登录按钮 */
+        .wt_btn {
+            display: inline-block;
+            position: absolute;
+            right:30px;
+            top:15px;
+            padding: 5px 10px; 
+            background: #D4AF37; /* 复古金主色 */
+            color: #1A1F36; /* 按钮文字深靛蓝，高对比 */
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5); /* 金色阴影 */
+            transition: all 0.3s ease;
+            vertical-align:middle;
+        }
+
+        .wct_btn {
+            display: inline-block;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background: #D4AF37;
+            color: #1A1F36;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .wt_btn:hover {
+            background: #E8C870; /* hover浅金 */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.7);
+        }
+        .wct_btn:hover {
+            background: #E8C870;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.7);
+        }
+        /* 对话框遮罩层 */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.3;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        /* 对话框容器 */
+        .dialog-container {
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 500px;
+            overflow: hidden;
+            transform: scale(0.8);
+            transition: transform 0.4s ease;
+        }
+        
+        /* 对话框头部 */
+        .dialog-header {
+            background: linear-gradient(#1A1F36, #2C3E50); /* 对话框头部深靛蓝渐变 */
+            color: #FFFFFF;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .dialog-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        /* 关闭按钮 */
+        .close-btn {
+            position: absolute;
+            top: 3px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #FFFFFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        /* 对话框内容 */
+        .dialog-content {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 150px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            text-align: left;
+            color: #1A1F36; /* 对话框文字深靛蓝 */
+        }
+        .dialog-content input{
+            border: 1px solid #BDC3C7;
+            border-radius: 4px;
+            padding: 5px;
+            margin: 5px 0;
+            color: #1A1F36;
+        }
+        /* 对话框底部 */
+        .dialog-footer {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background: #F8F9FA;
+            border-top: 1px solid #eee;
+        }
+        
+        .dialog-btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .primary-btn {
+            background: #D4AF37; /* 确认按钮复古金 */
+            color: #1A1F36;
+        }
+        
+        .secondary-btn {
+            background: #2C3E50; /* 取消按钮深靛蓝 */
+            color: #FFFFFF;
+        }
+        
+        .dialog-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .primary-btn:hover{
+            background: #E8C870;
+        }
+        .secondary-btn:hover{
+            background: #34495E;
+        }
+        /* 当复选框被选中时的样式 */
+        #want_watch:checked ~ .dialog-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #want_watch:checked ~ .dialog-overlay .dialog-container {
+            transform: scale(1);
+        }
+
+        #want_comment:checked ~ .dialog-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #want_comment:checked ~ .dialog-overlay .dialog-container {
+            transform: scale(1);
+        } 
+                    </textarea>
+                    <h2>3.主体部分</h2>
+                    <blockquote>
+                        ·主体部分同时划分为left、center、right三部分<br>
+                        ·left部分运用表格<code>tr</code>、<code>td</code>等标签实现电影类型、地区、时间等信息的筛选查询功能<br>
+                        ·center部分模仿markdown语法、使用<code>textarea</code>标签实现文本输入功能<br>
+                        ·right部分展示部分影视作品海报、名称、链接等信息<br>
+                    </blockquote>
+                    <blockquote>
+                        ·left部分代码如下：
+                    </blockquote>
+                    <textarea name="html" id="bolog">
+    <style>
+        .main .left h2{
+            margin-top: 50px;
+            margin-left: 20px;
+            color: #1A1F36; /* 侧边栏标题深靛蓝 */
+        }
+        .main .left table{
+            width:100%;
+            height: auto;
+            border-collapse: collapse;
+        }
+        .main .left table tr td{
+            width:25%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #333333;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .main .left table tr td:hover{
+            background-color: #E0E0E0; /* 列表项hover浅灰 */
+            color: #1A1F36;
+            font-weight: 500;
+        }
+    </style>
+    <body>
+        <div class="left">
+            <h2>类型：</h2>
+            <table>
+                <tr>
+                    <td>剧情</td>
+                    <td>喜剧</td>
+                    <td>短片</td>
+                    <td>爱情</td>
+                </tr>
+                <tr>
+                    <td>动作</td>
+                    <td>惊悚</td>
+                    <td>恐怖</td>
+                    <td>动画</td>
+                </tr>
+                <tr>
+                    <td>犯罪</td>
+                    <td>冒险</td>
+                    <td>家庭</td>
+                    <td>悬疑</td>
+                </tr>
+                <tr>
+                    <td>奇幻</td>
+                    <td>科幻</td>
+                    <td>战争</td>
+                    <td>更多</td>
+                </tr>
+            </table>
+            <h2>国家/地区：</h2>
+            <table>
+                <tr>
+                    <td>中国</td>
+                    <td>美国</td>
+                    <td>日本</td>
+                    <td>法国</td>
+                </tr>
+                <tr>
+                    <td>英国</td>
+                    <td>中国香港</td>
+                    <td>意大利</td>
+                    <td>德国</td>
+                </tr>
+                <tr>
+                    <td>韩国</td>
+                    <td>加拿大</td>
+                    <td>俄罗斯</td>
+                    <td>更多</td>
+                </tr>
+            </table>
+            <h2>年代：</h2>
+            <table>
+                <tr>
+                    <td>2025年</td>
+                    <td>2024年</td>
+                    <td>2023年</td>
+                    <td>2022年</td>
+                </tr>
+                <tr>
+                    <td>2021年</td>
+                    <td>2020年</td>
+                    <td>2019年</td>
+                    <td>2018年</td>
+                </tr>
+                <tr>
+                    <td>2017年</td>
+                    <td>2016年</td>
+                    <td>2015年</td>
+                    <td>2014年</td>
+                </tr>
+                <tr>
+                    <td>2013年</td>
+                    <td>2012年</td>
+                    <td>2011年</td>
+                    <td>2010年</td>
+                </tr>
+                <tr>
+                    <td>2009年</td>
+                    <td>2008年</td>
+                    <td>2007年</td>
+                    <td>更多</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+                    </textarea>
+                    <blockquote>
+                        ·right部分代码如下：
+                    </blockquote>
+                    <textarea name="html" id="bolog">
+    <style>
+        .right img{
+            width:80%;
+            height: auto;
+            margin-left: 10px;
+            margin-top:10px;
+            border-radius: 4px; /* 图片轻微圆角，更精致 */
+        }
+
+        .right img:hover{
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        /* 闪烁动画 */
+        @keyframes flash {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; } /* 调整透明度，避免过于刺眼 */
+            100% { opacity: 1; }
+        }
+
+        .flash-img {
+            width: 300px;
+            height: auto;
+            animation: flash 1.5s infinite linear; /* 放慢动画速度，更柔和 */
+        }
+
+        /* 抖动动画 */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-3px); }
+            40% { transform: translateX(3px); }
+            60% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake-img {
+            width: 300px;
+            height: auto;
+            animation: shake 0.5s infinite linear;
+        }
+    </style>
+    <body>
+        <div class="right hide-scrollbar">
+            <div id="mv">
+                <img src="./sorce/mv1.webp" alt="熊出没（2022）">
+                <br>
+                <a href="https://movie.douban.com/subject/10467770/" target="_blank">熊出没（2022）</a>
+            </div>
+            <div id="mv">
+                <img src="./sorce/mv2.webp" alt="熊出没之过年">
+                <br>
+                <a href="https://movie.douban.com/subject/21359690/" target="_blank">熊出没之过年</a>
+            </div>
+            <div class="shake-img ">
+                <img src="./sorce/mv3.webp" alt="熊出没之年货">
+                <br>
+                <a href="https://movie.douban.com/subject/25861610/" target="_blank">熊出没之年货</a>
+            </div>
+            <div class="flash-img">
+                <img src="./sorce/mv4.webp" alt="熊出没之雪岭熊风">
+                <br>
+                <a href="https://yygz314.github.io/project/html_homework_1/index.html" target="_blank">熊出没之雪岭熊风</a>
+            </div>
+        </div>
+    </body>
+                    </textarea>
+                    <blockquote>
+                        ·center部分为了参照markdown样式，我们使用<code>blockquote</code>标签进行文字介绍，使用<code>textarea</code>标签进行文本输入。<br>
+                        ·同时设置其相应属性使其符合markdown样式结构，并保持美观。
+                    </blockquote>
+                    <blockquote>
+                        ·center部分css代码如下：
+                    </blockquote>
+                    <textarea name="html" id="bolog">
+        #bolog{
+            width: 100%;
+            height: 400px;
+            resize:none;
+            background-color: #1A1F36; /* 代码块深靛蓝 */
+            border: 1px solid #D4AF37; /* 金色边框点缀 */
+            border-radius: 8px;
+            color: #E0E0E0; /* 代码文字浅灰 */
+            overflow-y: auto;
+            margin-right:20px;
+            font-family: monospace; /* 代码字体 */
+        }
+        .hide-scrollbar {
+            overflow-y: auto;
+            overflow-x: hidden;
+            &::-webkit-scrollbar { 
+                display: none; 
+            } 
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .hw2_markdown{
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+        }
+        .hw2_markdown h1, .hw2_markdown h2{
+            color: #1A1F36; /* 标题深靛蓝 */
+            border-bottom: 1px solid #E0E0E0; /* 标题下划线浅灰 */
+            padding-bottom: 10px;
+        }
+        .hw2_markdown p{
+            line-height: 1.8;
+            color: #333333;
+        }
+        .hw2_markdown blockquote{
+            border-left: 4px solid #D4AF37; /* 引用左侧金色边框 */
+            background-color: #F0F5F9; /* 引用背景浅灰蓝 */
+            padding: 10px 15px;
+            margin: 15px 0;
+            color: #1A1F36;
+            border-radius: 0 4px 4px 0;
+        }
+        .center-img{
+            width: 50%;
+            height: auto;
+            padding-left:200px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        
+                    </textarea>
+                    <h2>4.页尾</h2>
+                    <blockquote>
+                        ·其最终结果如下：
+                    </blockquote>
+                    <img src="./sorce/foot.png" alt="页尾" class="center-img">
+                    <blockquote>
+                        ·代码如下：
+                    </blockquote>
+                    <textarea name="html" id="bolog">
+    <style>
+        .footer{
+            clear: both;
+            width:100%;
+            height:auto;
+            background-color: #1A1F36; /* 页脚深靛蓝 */
+        }
+        .footer p{
+            color: #E0E0E0; /* 页脚文字浅灰，避免纯白刺眼 */
+            text-align: center;
+            line-height: 10px; /* 增加行高，更易读 */
+            margin: 0;
+            padding: 10px 0;
+        }
+    </style>
+    <body>
+        <div class="footer">
+            <p>&copy;2025-2035 Yygz314</p>
+            <p>联系我们：2711859393@qq.com</p>
+        </div> 
+    </body>
+                    </textarea>
+                    <h2>5.AI辅助说明</h2>
+                    <blockquote>
+                        1.本电影网站名称“逐光影”及其logo为AI辅助生成，请勿用于商业用途。<br>
+                        2.本电影网站<code>head</code>标签内部背景图片为AI辅助生成，请勿用于商业用途。<br>
+                        3.本网站登录按钮的弹窗功能实现为AI辅助生成并做相应调整。<br>
+                        4.本网站<code>body-right</code>部分图片抖动和闪动功能为AI辅助生成并做相应调整。<br>
+                        5.本网站<code>body-center</code>部分仿照markdown样式的实现由AI辅助生成并做相应调整。<br>
+                        6.本网站相应配色为深靛蓝、浅灰蓝、金色、浅灰等，避免纯白刺眼，由AI辅助生成并做相应调整。<br>
+                        7.本网站响应式设计由AI辅助完成并做相应调整。<br>
+                        8.感谢熊出没团队提供的电影资源，本网站仅用于学习和展示目的。
+                    </blockquote>
+                </div>
+            </div>
+            <div class="right hide-scrollbar">
+                <div id="mv">
+                    <img src="./sorce/mv1.webp" alt="熊出没（2022）">
+                    <br>
+                    <a href="https://movie.douban.com/subject/10467770/" target="_blank">熊出没（2022）</a>
+                </div>
+                <div id="mv">
+                    <img src="./sorce/mv2.webp" alt="熊出没之过年">
+                    <br>
+                    <a href="https://movie.douban.com/subject/21359690/" target="_blank">熊出没之过年</a>
+                </div>
+                <div class="shake-img ">
+                    <img src="./sorce/mv3.webp" alt="熊出没之年货">
+                    <br>
+                    <a href="https://movie.douban.com/subject/25861610/" target="_blank">熊出没之年货</a>
+                </div>
+                <div class="flash-img">
+                    <img src="./sorce/mv4.webp" alt="熊出没之雪岭熊风">
+                    <br>
+                    <a href="https://yygz314.github.io/project/html_homework_1/index.html" target="_blank">熊出没之雪岭熊风</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy;2025-2035 Yygz314</p>
+            <p>联系我们：2711859393@qq.com</p>
+        </div>
+    </div>
+</body>
+</html>

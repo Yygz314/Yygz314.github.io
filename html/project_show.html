@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: Yygz314 2711859393@qq.com
- * @LastEditTime: 2025-10-29 18:25:55
+ * @LastEditTime: 2025-11-12 21:28:50
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -65,12 +65,6 @@
     </div>
     <div class="container">
         <form>
-        html_homework ：
-        <select id="html_homework_Select">
-            <option value="">-- 选择文件 --</option>
-            <option value="../project/html_homework_1/index.html">html_homework_1</option>">
-        </select>
-        <br />
         CSS ：
         <select id="CSS_Select">
             <option value="">-- 选择文件 --</option>
@@ -82,9 +76,6 @@
     <div>
 
     <script>
-        document.getElementById("html_homework_Select").addEventListener("change", function() {
-            if(this.value) location.href = this.value;
-        });
         document.getElementById("CSS_Select").addEventListener("change", function() {
             if(this.value) location.href = this.value;
         });

@@ -1,0 +1,598 @@
+        body{
+            margin:0px;
+            padding:0px;
+            color: #333333; /* 全局默认文字色，保障可读性 */
+        }
+        a{
+            text-decoration: none;
+            color: #333333;
+        }
+        .box{
+            width:100%;
+            height:auto;
+        }
+        .header{
+            width:100%;
+            height:400px;
+            background-image:url(./sorce/header.png);
+            background-size: 100% 400px;
+            opacity: 0.8;
+        }
+        .nav{
+            width:100%;
+            height:70px;
+            background: linear-gradient(#1A1F36, #2C3E50); /* 导航栏深靛蓝渐变 */
+            transition: background 0.3s ease;
+        }
+        .nav:hover{
+            background: linear-gradient(#2C3E50, #34495E); /* hover时加深渐变 */
+        }
+        .nav img{
+            margin-left: 160px;
+            margin-top: 4px;
+            display: inline-block;
+            width:100px;
+            height:47px;
+            object-fit:cover;
+            vertical-align:middle;
+        }
+        #nav-list{
+            position:relative;
+            top:5px;
+            display:inline-block;
+            margin-left: 0; 
+        }
+        #nav-list li{
+            display:inline-block;
+            margin-left:30px;
+            margin-top:0px;
+            font-size:20px;
+            color:#FFFFFF; /* 导航文字纯白，高对比度 */
+            cursor:pointer;
+            transition: color 0.2s ease;
+        }
+        #nav-list li:hover{
+            color: #D4AF37; /* hover时变成复古金 */
+        }
+        #serch-box{
+            display:inline-block;
+            margin-left:100px;
+            vertical-align:middle;
+        }
+        #serch-text{
+            width:200px;
+            height:30px;
+            border-radius: 50px; 
+            border: none;
+            outline: none;
+            padding-left: 15px;
+            vertical-align:middle;
+            background-color: #2C3E50; /* 搜索框深色背景 */
+            color: #E0E0E0; /* 搜索文字浅灰 */
+        }
+        #serch-text::placeholder{
+            color: #95A5A6; /* 占位符浅灰 */
+        }
+        #serch-btn{
+            width:30px;
+            height:30px;
+            border-radius: 50px; 
+            border: none;
+            outline: none;
+            background-color: #D4AF37; /* 搜索按钮复古金 */
+            background-image: url(./sorce/serch.png);
+            background-size: 20px 20px;
+            background-position: center;
+            background-repeat: no-repeat;
+            vertical-align:middle;
+            cursor:pointer;
+            transition: background-color 0.2s ease;
+        }
+        #serch-btn:hover{
+            background-color: #E8C870; /* 按钮hover浅金 */
+        }
+        
+        #want_watch {
+            display: none;
+        }
+        #want_comment {
+            display: none;
+        }
+        .container{
+            display: inline-block;
+            text-align: center;
+        }
+        /* 登录按钮 */
+        .wt_btn {
+            display: inline-block;
+            position: absolute;
+            right:30px;
+            top:15px;
+            padding: 5px 10px; 
+            background: #D4AF37; /* 复古金主色 */
+            color: #1A1F36; /* 按钮文字深靛蓝，高对比 */
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5); /* 金色阴影 */
+            transition: all 0.3s ease;
+            vertical-align:middle;
+        }
+
+        .wct_btn {
+            display: inline-block;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background: #D4AF37;
+            color: #1A1F36;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .wt_btn:hover {
+            background: #E8C870; /* hover浅金 */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.7);
+        }
+        .wct_btn:hover {
+            background: #E8C870;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.7);
+        }
+        /* 对话框遮罩层 */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.3;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        /* 对话框容器 */
+        .dialog-container {
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 500px;
+            overflow: hidden;
+            transform: scale(0.8);
+            transition: transform 0.4s ease;
+        }
+        
+        /* 对话框头部 */
+        .dialog-header {
+            background: linear-gradient(#1A1F36, #2C3E50); /* 对话框头部深靛蓝渐变 */
+            color: #FFFFFF;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .dialog-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        /* 关闭按钮 */
+        .close-btn {
+            position: absolute;
+            top: 3px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #FFFFFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        /* 对话框内容 */
+        .dialog-content {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 150px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            text-align: left;
+            color: #1A1F36; /* 对话框文字深靛蓝 */
+        }
+        .dialog-content input{
+            border: 1px solid #BDC3C7;
+            border-radius: 4px;
+            padding: 5px;
+            margin: 5px 0;
+            color: #1A1F36;
+        }
+        /* 对话框底部 */
+        .dialog-footer {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background: #F8F9FA;
+            border-top: 1px solid #eee;
+        }
+        
+        .dialog-btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .primary-btn {
+            background: #D4AF37; /* 确认按钮复古金 */
+            color: #1A1F36;
+        }
+        
+        .secondary-btn {
+            background: #2C3E50; /* 取消按钮深靛蓝 */
+            color: #FFFFFF;
+        }
+        
+        .dialog-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .primary-btn:hover{
+            background: #E8C870;
+        }
+        .secondary-btn:hover{
+            background: #34495E;
+        }
+        /* 当复选框被选中时的样式 */
+        #want_watch:checked ~ .dialog-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #want_watch:checked ~ .dialog-overlay .dialog-container {
+            transform: scale(1);
+        }
+
+        #want_comment:checked ~ .dialog-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #want_comment:checked ~ .dialog-overlay .dialog-container {
+            transform: scale(1);
+        }
+
+        .main{
+            width:100%;
+            max-height: 1000px;
+        }
+        .main .left{
+            float:left;
+            width:20%;
+            height:1000px;
+            overflow-y:auto;
+            overflow-x: hidden;
+            background-color: #F0F5F9; /* 侧边栏浅灰蓝 */
+        }
+        .main .left h2{
+            margin-top: 50px;
+            margin-left: 20px;
+            color: #1A1F36; /* 侧边栏标题深靛蓝 */
+        }
+        .main .left table{
+            width:100%;
+            height: auto;
+            border-collapse: collapse;
+        }
+        .main .left table tr td{
+            width:25%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #333333;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .main .left table tr td:hover{
+            background-color: #E0E0E0; /* 列表项hover浅灰 */
+            color: #1A1F36;
+            font-weight: 500;
+        }
+        .main .center{
+            float:left;
+            width:60%;
+            height:1000px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background-color: #FFFFFF; /* 主体内容区纯白 */
+        }
+        .main .right{
+            float:left;
+            width:20%;
+            height:1000px;
+            overflow-y:auto;
+            overflow-x: hidden;
+            background-color: #F0F5F9; /* 右侧边栏浅灰蓝 */
+            text-align: center;
+        }
+
+        .right img{
+            width:80%;
+            height: auto;
+            margin-left: 10px;
+            margin-top:10px;
+            border-radius: 4px; /* 图片轻微圆角，更精致 */
+        }
+
+        .right img:hover{
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        /* 闪烁动画 */
+        @keyframes flash {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; } /* 调整透明度，避免过于刺眼 */
+            100% { opacity: 1; }
+        }
+
+        .flash-img {
+            width: 300px;
+            height: auto;
+            animation: flash 1.5s infinite linear; /* 放慢动画速度，更柔和 */
+        }
+
+        /* 抖动动画 */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-3px); }
+            40% { transform: translateX(3px); }
+            60% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake-img {
+            width: 300px;
+            height: auto;
+            animation: shake 0.5s infinite linear;
+        }
+
+        .footer{
+            clear: both;
+            width:100%;
+            height:auto;
+            background-color: #1A1F36; /* 页脚深靛蓝 */
+        }
+        .footer p{
+            color: #E0E0E0; /* 页脚文字浅灰，避免纯白刺眼 */
+            text-align: center;
+            line-height: 10px; /* 增加行高，更易读 */
+            margin: 0;
+            padding: 10px 0;
+        }
+        #bolog{
+            width: 100%;
+            height: 400px;
+            resize:none;
+            background-color: #1A1F36; /* 代码块深靛蓝 */
+            border: 1px solid #D4AF37; /* 金色边框点缀 */
+            border-radius: 8px;
+            color: #E0E0E0; /* 代码文字浅灰 */
+            overflow-y: auto;
+            margin-right:20px;
+            font-family: monospace; /* 代码字体 */
+        }
+        .hide-scrollbar {
+            overflow-y: auto;
+            overflow-x: hidden;
+            &::-webkit-scrollbar { 
+                display: none; 
+            } 
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .hw2_markdown{
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+        }
+        .hw2_markdown h1, .hw2_markdown h2{
+            color: #1A1F36; /* 标题深靛蓝 */
+            border-bottom: 1px solid #E0E0E0; /* 标题下划线浅灰 */
+            padding-bottom: 10px;
+        }
+        .hw2_markdown h1{
+            text-align: center;
+        }
+        .hw2_markdown p{
+            line-height: 1.8;
+            color: #333333;
+        }
+        .hw2_markdown blockquote{
+            border-left: 4px solid #D4AF37; /* 引用左侧金色边框 */
+            background-color: #F0F5F9; /* 引用背景浅灰蓝 */
+            padding: 10px 15px;
+            margin: 15px 0;
+            color: #1A1F36;
+            border-radius: 0 4px 4px 0;
+        }
+        .center-img{
+            width: 50%;
+            height: auto;
+            padding-left:200px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 响应式断点：平板设备（≤ 992px）- 两列布局 */
+@media (max-width: 992px) {
+    /* 头部优化 */
+    .header {
+        height: auto; /* 取消固定高度，适配小屏 */
+        background-size: cover; /* 背景图自适应，避免变形 */
+    }
+    .nav img {
+        margin-left: 50px; /* 缩小 logo 左边距 */
+    }
+    #nav-list li {
+        margin-left: 20px; /* 缩小导航项间距 */
+        font-size: 18px; /* 缩小导航字体 */
+    }
+    #serch-box {
+        margin-left: 50px; /* 缩小搜索框左边距 */
+    }
+    #serch-text {
+        width: 160px; /* 缩小搜索框宽度 */
+    }
+    .wt_btn {
+        right: 20px;
+        padding: 4px 8px;
+        font-size: 18px; /* 缩小登录按钮 */
+    }
+
+    /* 主体布局：左30% + 中70%，右侧单列下沉 */
+    .main {
+        max-height: none; /* 取消最大高度限制 */
+    }
+    .main .left {
+        width: 30%;
+        height: auto; /* 取消固定高度 */
+    }
+    .main .center {
+        width: 70%;
+        height: auto;
+    }
+    .main .right {
+        width: 100%;
+        height: auto;
+        float: none; /* 取消浮动，单列显示 */
+        padding: 20px 0;
+    }
+    .right img {
+        width: 200px; /* 固定图片宽度，横向排列更美观 */
+        display: inline-block;
+        margin: 10px;
+    }
+
+    /* 内容区域优化 */
+    .center-img {
+        padding-left: 0;
+        margin: 20px auto;
+        display: block;
+        width: 70%; /* 图片宽度适配两列布局 */
+    }
+    #bolog {
+        height: 300px; /* 缩小代码块高度 */
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) and (max-width:799px){
+    /* 头部优化：紧凑排列 */
+    .nav {
+        height: auto; 
+        padding: 10px 0;
+    }
+    .nav img {
+        margin-left: 20px;
+        width: 80px; 
+        height: 38px;
+    }
+    #nav-list {
+        display: block; 
+        text-align: center;
+        margin: 10px 0;
+        top: 0;
+    }
+    #nav-list li {
+        margin: 0 10px;
+        font-size: 16px;
+    }
+    #serch-box {
+        display: block; 
+        margin: 10px auto;
+        text-align: center;
+    }
+    #serch-text {
+        width: 220px; 
+    }
+    .wt_btn {
+        position: relative; 
+        right: 0;
+        top: 0;
+        display: block;
+        margin: 10px auto;
+        width: 100px;
+    }
+    .main .left,
+    .main .center {
+        width: 100%;
+        float: none; 
+        height: auto;
+    }
+    .main .left {
+        padding: 10px 0;
+    }
+    .main .left table tr td {
+        width: 50%;
+        font-size: 14px;
+    }
+
+    .hw2_markdown {
+        padding: 15px;
+    }
+    .hw2_markdown h1 {
+        font-size: 24px;
+    }
+    .hw2_markdown h2 {
+        font-size: 20px;
+    }
+    .center-img {
+        width: 90%; 
+    }
+    #bolog {
+        height: 250px; 
+        font-size: 12px;
+    }
+    .dialog-container {
+        width: 95%;
+    }
+    .dialog-content {
+        padding: 20px; 
+        text-align: center;
+    }
+    .dialog-content input {
+        width: 80%; 
+        margin: 10px auto;
+        display: block;
+    }
+}
+
