@@ -1,0 +1,504 @@
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+
+        /* 全局变量 */
+        :root {
+            --primary-color: #2563eb; /* 主色调-蓝色 */
+            --secondary-color: #f1f5f9; /* 辅助色-浅灰蓝 */
+            --text-color: #334155; /* 文本色 */
+            --light-text: #64748b; /* 浅色文本 */
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: var(--card-shadow);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* 移动端导航适配 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* 头部信息样式 */
+        header {
+            margin-top: 80px;
+            padding: 3rem 1.5rem;
+            background-color: var(--secondary-color);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: var(--card-shadow);
+        }
+
+        .personal-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .personal-info h1 {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 0.6rem 0;
+            color: var(--light-text);
+        }
+
+        .info-item i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* 主要内容容器 */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* 板块标题样式 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            display: inline-block;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        /* 比赛经历-时间轴样式 */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: "";
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 4px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .timeline-desc {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        /* 移动端时间轴适配 */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                left: 0 !important;
+            }
+
+            .timeline-item::after {
+                left: 18px !important;
+            }
+        }
+
+        /* 荣誉/综测奖项-卡片样式 */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.8rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .award-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .award-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .award-card h3 i {
+            color: var(--primary-color);
+        }
+
+        .award-card .award-date {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .award-card .award-desc {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 板块间距 */
+        section {
+            margin-bottom: 5rem;
+        }
+
+
+/* 折叠模块核心样式 */
+.collapse-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3rem 0 0;
+    transition: background-color 0.2s ease;
+}
+.collapse-header:hover {
+    background-color: #1d4ed8; /* 略深的蓝色 */
+}
+.collapse-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.collapse-icon {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+/* 折叠状态：内容隐藏 + 箭头旋转 */
+.collapse-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    box-shadow: var(--card-shadow);
+    margin-top: 2px;
+}
+/* 展开状态：显示内容 + 箭头旋转180度 */
+.collapse-content.active {
+    max-height: 4000px; /* 足够大的高度容纳内容 */
+    padding: 1.5rem;
+}
+.collapse-header.active .collapse-icon {
+    transform: rotate(180deg);
+}
+
+/* 原有细则样式保留 + 微调 */
+.rules-desc {
+    line-height: 1.8;
+}
+.rules-desc p {
+    margin-bottom: 1rem;
+}
+.rules-desc h4 {
+    margin: 1.2rem 0 0.8rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+.rules-list {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--light-text);
+}
+.rules-list li {
+    margin-bottom: 0.6rem;
+}
+.table-container {
+    overflow-x: auto; /* 移动端横向滚动适配 */
+    margin-top: 1rem;
+}
+.score-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+.score-table th, .score-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--secondary-color);
+}
+.score-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+.score-table tbody tr:hover {
+    background-color: var(--secondary-color);
+    transition: background-color 0.2s ease;
+}
+.score-table td {
+    color: var(--text-color);
+}
+
+
+/* 密码弹窗样式（适配原有页面风格） */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* 最高层级，覆盖所有内容 */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-content h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.modal-content button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.modal-content button:hover {
+  background-color: #1d4ed8;
+}
+
+.error-text {
+  color: #ef4444;
+  margin-bottom: 1rem;
+  height: 20px;
+  font-size: 0.9rem;
+}

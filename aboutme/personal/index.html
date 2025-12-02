@@ -1,0 +1,526 @@
+<!--
+ * @LastEditors: Yygz314 2711859393@qq.com
+ * @LastEditTime: 2025-12-02 18:41:43
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的大学经历记录</title>
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+<!-- 密码验证弹窗 -->
+<div id="passwordModal" class="modal">
+  <div class="modal-content">
+    <h2>请输入访问密码</h2>
+    <input type="password" id="passwordInput" placeholder="输入密码后按回车">
+    <div class="error-text" id="errorText"></div>
+    <button id="verifyBtn">验证</button>
+  </div>
+</div>
+
+<!-- 内容容器（把原有所有内容包裹起来） -->
+<div id="mainContent" style="display: none;">
+
+    <!-- 导航栏 -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>我的大学经历</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="active">首页</a>
+                <a href="#competitions">比赛经历</a>
+                <a href="#honors">荣誉奖项</a>
+                <a href="#comprehensive">综测奖项</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 头部个人信息 -->
+    <header id="home">
+        <div class="header-container">
+            <!-- 替换为自己的头像图片，本地图片或网络图片都可以 -->
+            <img src="./sources/personal.jpg" alt="个人头像" class="avatar">
+            <div class="personal-info">
+                <h1>叶诚 - 大学经历档案</h1>
+                <div class="info-item">
+                    <i class="fas fa-university"></i>
+                    <span>浙江中医药大学 | 医学技术与信息工程学院 | 计算机科学与技术专业 | 2024年9月-</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>学历：本科 </span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>校园个人邮箱：yecheng@zcmu.edu.cn</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>联系方式：17857116310</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <!-- 比赛经历板块 -->
+        <section id="competitions">
+            <div class="section-title">
+                <h2>比赛经历</h2>
+            </div>
+            <div class="timeline">
+<!-- <div class="timeline-item">
+    <div class="timeline-content">
+        <div class="timeline-date">
+            <i class="fas fa-calendar-alt"></i>
+            [比赛时间]
+        </div>
+        <h3 class="timeline-title">[比赛名称]</h3>
+        <div class="timeline-desc">
+            参赛组别：[组别] | 获奖等级：[等级]<br>
+            项目描述：[比赛详情/个人贡献/成果]
+        </div>
+    </div>
+</div> -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            2025-11-24
+                        </div>
+                        <h3 class="timeline-title">【省】2025年全国大学生数学建模竞赛浙江赛区</h3>
+                        <div class="timeline-desc">
+                            赛题：A题 <br>
+                            队伍：【第一梯队】叶诚、罗佳慧、徐航毅 <br>
+                            奖项：三等奖 <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            2025-11-24
+                        </div>
+                        <h3 class="timeline-title">【院】廉洁新媒体推文大赛</h3>
+                        <div class="timeline-desc">
+                            作品：《医心守正，数字倡廉》 <br>
+                            作者：叶诚、罗佳慧 <br>
+                            奖项：三等奖 <br>
+                            <a href="https://yjxx.zcmu.edu.cn/info/1045/9728.htm" target="_blank">获奖链接</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <!-- 荣誉奖项板块 -->
+        <section id="honors">
+            <div class="section-title">
+                <h2>荣誉奖项与活动经历</h2>
+            </div>
+
+            <div class="awards-grid">
+<!-- <div class="award-card">
+    <h3><i class="fas fa-trophy"></i> [荣誉名称]</h3>
+    <div class="award-date">[获得时间]</div>
+    <div class="award-desc">
+        [荣誉详情/评选条件/个人贡献]
+    </div>
+</div> -->
+                <div class="award-card">
+                    <h3><i class="fas fa-trophy"></i> 2025年校园微型马拉松环校跑活动</h3>
+                    <div class="award-date">2025.10.29</div>
+                    <div class="award-desc">
+                        <img src="./sources/run.jpg" alt="校园微型马拉松环校跑活动" style="width: 100%; height: auto;">
+                    </div>
+                </div>
+                <div class="award-card">
+                    <h3><i class="fas fa-trophy"></i> 2025年校运动会4*100 </h3>
+                    <div class="award-date">2025.11.6</div>
+                    <div class="award-desc">
+                        <img src="./sources/run-4_100.jpg" alt="2025年校运动会4*100 " style="width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 综测奖项板块 -->
+        <section id="comprehensive">
+            <div class="section-title">
+                <h2>综测奖项</h2>
+            </div>
+<!-- 新增：可折叠的思想品德类综测加分细则模块 -->
+<div class="score-rules">
+    <!-- 折叠触发标题 -->
+    <div class="collapse-header" id="rulesHeader">
+        <h3>
+            <i class="fas fa-chevron-down collapse-icon"></i>
+            思想品德类综测加分细则
+        </h3>
+    </div>
+    <!-- 折叠内容容器 -->
+    <div class="collapse-content" id="rulesContent">
+        <div class="rules-desc">
+            <p>思想品德成绩由基本分5.6分、附加分和扣罚分组成，总分值不超过8分。</p>
+            <h4>一、基本分5.6分获取条件：</h4>
+            <ul class="rules-list">
+                <li>1. 政治表现：热爱祖国，坚持四项基本原则，维护安定团结；不参加非法活动，关心国家大事，积极参与政治学习与社会实践。</li>
+                <li>2. 道德品质：注重个人修养，服饰整洁、待人有礼；团结友善、诚实守信，服从集体管理，维护公平正义。</li>
+                <li>3. 学习态度：学习目标明确、态度端正，勤奋钻研、有创新精神，无厌学旷课现象。</li>
+                <li>4. 实践公益：积极参与社会实践、青年志愿及公益活动，关心集体、热心服务他人。</li>
+            </ul>
+            <h4>二、附加分细则：</h4>
+            <div class="table-container">
+                <table class="score-table">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>加分项</th>
+                            <th>加分值</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>集体荣誉：获先进班团、社会实践团队等集体荣誉的全体成员</td>
+                            <td>省级及以上：1.0分<br>校（市）级：0.3分<br>院级：0.1分</td>
+                            <td>校级红旗团支部成员0.6分；<br>校级优秀志愿小分队成员0.25分</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>个人荣誉：获优秀党团员、军训标兵等称号</td>
+                            <td>省级及以上：1.0分<br>校（市）级：0.5分<br>院级：0.1分</td>
+                            <td>同类别称号以最高级别加分</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>遇突发事件挺身而出、见义勇为表现突出者</td>
+                            <td>2.0分</td>
+                            <td>须由学院测评小组认定</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>参加青年志愿活动（如电脑医院、听音驿站等）</td>
+                            <td>每5工时计0.1分，上限1分</td>
+                            <td rowspan="3">须有证明材料</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>参加义务献血</td>
+                            <td>0.2分</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>捐献造血干细胞</td>
+                            <td>1.0分</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>未列举的其他符合加分事项</td>
+                            <td>-</td>
+                            <td>由学院测评小组认定加分项及分值</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新增：可折叠的基础文明类综测加分细则模块 -->
+<div class="score-rules">
+    <!-- 折叠触发标题 -->
+    <div class="collapse-header" id="rulesHeader2">
+        <h3>
+            <i class="fas fa-chevron-down collapse-icon"></i>
+            基础文明类综测加分细则
+        </h3>
+    </div>
+    <!-- 折叠内容容器 -->
+    <div class="collapse-content" id="rulesContent2">
+        <div class="rules-desc">
+            <p>基础文明成绩由基本分5.6分、附加分和扣罚分组成，总分值不超过8分。</p>
+            <h4>一、基本分5.6分获取条件：</h4>
+            <ul class="rules-list">
+                <li>1. 文明守纪：加强自我修养，遵守社会公德，尊敬师长、团结同学；遵守国家法律与学校规章，无违法违纪行为；遵守考试纪律，无作弊现象。</li>
+                <li>2. 学风表现：自觉遵守课堂纪律，不迟到早退、无故旷课；上课认真听讲，不睡觉、不玩手机；主动参加早锻炼、早读、晚自习及学校（院）组织的讲座/报告。</li>
+                <li>3. 寝室文明：寝室内务整洁，物品摆放有序；不使用违章电器、不私接电线；不赌博酗酒、不打架；寝室人际关系和谐，学习氛围浓厚，作息健康。</li>
+            </ul>
+            <h4>二、附加分细则：</h4>
+            <div class="table-container">
+                <table class="score-table">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>加分项</th>
+                            <th>加分值</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>自觉参加早读、早锻炼（按出勤率加分）</td>
+                            <td>100%：1.0分<br>80%：0.8分<br>50%：0.5分</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>积极参加学院（校）组织的文体活动</td>
+                            <td>0.1分/次，本项上限0.5分</td>
+                            <td>须提供证明；文体活动获奖者在“能力素质”项加分，此项不重复加分</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>校内寝室评比活动获奖成员（按一/二/三等奖加分）</td>
+                            <td>校级：1.0/0.8/0.5分/人<br>院级：0.5/0.3/0.2分/人</td>
+                            <td>不设评比等级的活动按校级0.8分、院级0.3分加分；校“十佳寝室”1.0分/人、“百强寝室”0.8分/人</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>学年寝室安全卫生检查全部合格且“优秀寝室”占比达80%及以上</td>
+                            <td>80%：0.8分<br>100%：1.0分</td>
+                            <td>以学工部公布的检查结果为依据</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>未列举的其他符合加分事项</td>
+                            <td>由学院测评小组认定</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新增：可折叠的能力素质类综测加分细则模块 -->
+<div class="score-rules">
+    <!-- 折叠触发标题 -->
+    <div class="collapse-header" id="rulesHeader3">
+        <h3>
+            <i class="fas fa-chevron-down collapse-icon"></i>
+            能力素质类综测加分细则
+        </h3>
+    </div>
+    <!-- 折叠内容容器 -->
+    <div class="collapse-content" id="rulesContent3">
+        <div class="rules-desc">
+            <p>能力素质成绩由基本分3分和附加分组成，总分值不超过8分。</p>
+            <h4>二、附加分细则：</h4>
+            <div class="table-container">
+                <table class="score-table">
+                    <thead>
+                        <tr>
+                            <th>项目</th>
+                            <th>加分项</th>
+                            <th>加分值</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="8">学术科研</td>
+                            <td>各类技能/职业证书（ITAT、驾驶证除外）</td>
+                            <td>1.0分</td>
+                            <td>仅限证书获得学年加分</td>
+                        </tr>
+                        <tr>
+                            <td>大学英语四级</td>
+                            <td>0.5分</td>
+                            <td rowspan="4">-</td>
+                        </tr>
+                        <tr>
+                            <td>大学英语六级</td>
+                            <td>0.8分</td>
+                        </tr>
+                        <tr>
+                            <td>雅思</td>
+                            <td>6-6.5分：1分；7分以上：1.2分</td>
+                        </tr>
+                        <tr>
+                            <td>托福</td>
+                            <td>80-90分：1分；90分以上：1.2分</td>
+                        </tr>
+                        <tr>
+                            <td>GRE成绩1100分及以上</td>
+                            <td>1分</td>
+                            <td rowspan="3">其它小语种证书由评议小组认定后加分</td>
+                        </tr>
+                        <tr>
+                            <td>小语种证书（日语/法语/德语等）</td>
+                            <td>日语能力1-4级：0.8/0.6/0.4/0.2分；<br>法语/德语四/三级：0.6/0.3分</td>
+                        </tr>
+                        <tr>
+                            <td>浙江省计算机等级考试二/三级、程序能力考试（PAT）证书</td>
+                            <td>0.5分</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">学术科研</td>
+                            <td>科技/竞赛活动获奖者（学科竞赛、挑战杯等）</td>
+                            <td>国家级：5.0/4.0/3.0/2.0分；<br>省级：3.0/2.5/2.0/1.5分；<br>校（市）级：2.0/1.8/1.5/1.0分；<br>院级：1.0/0.8/0.5/0.2分</td>
+                            <td>集体项目分配系数见备注</td>
+                        </tr>
+                        <tr>
+                            <td>科研课题立项者</td>
+                            <td>国家级：立项2分/结题2分；<br>省级：立项1.5分/结题1.5分；<br>校级：立项0.5分/结题0.5分</td>
+                            <td>发展性资助项目不计入；集体项目分配系数见备注</td>
+                        </tr>
+                        <tr>
+                            <td>社会实践调研成果获奖者</td>
+                            <td>国家级：1.5分；省级：0.8分；<br>校（市）级：0.2分</td>
+                            <td>成果公开发表可同时参照论文项加分；集体项目分配系数见备注</td>
+                        </tr>
+                        <tr>
+                            <td>以第一作者发表学术论文</td>
+                            <td>SCI：5.0分；<br>SCIE、EI、ISTP：3.0分；<br>卓越期刊：2.0分；<br>统计源期刊：1.5分；<br>其他刊物：0.8分</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">学术科研</td>
+                            <td>获得国家专利/计算机软件著作权</td>
+                            <td>国家授权发明专利：4.0分；<br>国家受理发明专利/授权实用新型专利：1.5分；<br>外观设计专利：1.0分</td>
+                            <td>仅第一发明人加分</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">就业创业</td>
+                            <td>大学生首次创业进驻创业园项目负责人</td>
+                            <td>2.0分</td>
+                            <td rowspan="3">仅学生本人向学院申请认定成功的学年加分</td>
+                        </tr>
+                        <tr>
+                            <td>注册公司者、法人及合伙人</td>
+                            <td>3.0分</td>
+                        </tr>
+                        <tr>
+                            <td>淘宝网店、微店经营（符合学校认定要求）</td>
+                            <td>1.5分</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">文体特长</td>
+                            <td>获得美育/体育相关资格等级证书</td>
+                            <td>2.0分</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>个人在各类文体活动中获奖（不含趣味性）</td>
+                            <td>国家级：3.0/2.0/1.5/0.8分；<br>省级：2.0/1.5/0.8/0.5分；<br>校（市）级：1.0/0.8/0.5/0.3分；<br>院级：0.5/0.3/0.2分</td>
+                            <td>此项累计不超过3分</td>
+                        </tr>
+                        <tr>
+                            <td>团体在各类文体活动中获奖（不含趣味性）</td>
+                            <td>国家级：2.0/1.5/1.0/0.8分；<br>省级：1.5/1.0/0.8/0.5分；<br>校（市）级：0.8/0.5/0.2/0.1分；<br>院级：0.3/0.2/0.1分</td>
+                            <td>此项累计不超过2分</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1">文体特长</td>
+                            <td>大型文艺活动参演（校级迎新晚会、毕业晚会等）</td>
+                            <td>1.0/0.8分</td>
+                            <td>群体节目分值为原分×0.3；参演多个节目可累计，同一节目多次出演分数减半；此项累计不超过3分</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="8">社会工作</td>
+                            <td>校团委委员</td>
+                            <td>1.8分</td>
+                            <td rowspan="8">如有兼职最多取2项最高分加分；所有社会工作任职需满一学年</td>
+                        </tr>
+                        <tr>
+                            <td>校级组织：主席团/委员/秘书长等</td>
+                            <td>1.7/1.6/1.5分（按优秀/良好/合格）</td>
+                        </tr>
+                        <tr>
+                            <td>校级组织：部长/专门工作委员会主任</td>
+                            <td>1.4/1.3/1.2分（按优秀/良好/合格）</td>
+                        </tr>
+                        <tr>
+                            <td>校级组织：副部长</td>
+                            <td>1.3/1.2/1.1分（按优秀/良好/合格）</td>
+                        </tr>
+                        <tr>
+                            <td>校院各级学生组织干事</td>
+                            <td>0.5/0.4/0.3分（按优秀/良好/合格）</td>
+                        </tr>
+                        <tr>
+                            <td>院级组织：主席团/委员</td>
+                            <td>1.6/1.5/1.4分（按优秀/良好/合格）</td>
+                        </tr>
+                        <tr>
+                            <td>院级组织：部长/团总支委员</td>
+                            <td>1.1/1.0/0.9分（按优秀/良好/合格）</td>
+                        </tr>
+                        <tr>
+                            <td>院级组织：副部长/社团负责人/班级干部/寝室长</td>
+                            <td>1.0/0.9/0.8分（副部长）；<br>0.8/0.6分（社团会长）；0.6/0.5分（社团副会长）；<br>班长/支书0.8分、班委0.5分；<br>寝室长0.5/0.3/0分（优秀/合格/不合格）</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">特殊经历</td>
+                            <td>学生自强不息（学院认定）</td>
+                            <td>1.0分</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>参与出/国境交流</td>
+                            <td>3个月以上：0.6分；1个月以上：0.4分；<br>1周以上：0.2分</td>
+                            <td>云上访学拿到结业证书者加0.2分</td>
+                        </tr>
+                        <tr>
+                            <td>学生应征入伍</td>
+                            <td>1.0分</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>参加省级及以上重大活动/会议（学院认定）</td>
+                            <td>0.5分</td>
+                            <td>需提供相关文件证明</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4>三、备注说明：</h4>
+            <ul class="rules-list">
+                <li>1. 科技活动、科研课题、社会实践等集体项目获奖：按排名乘系数（1.0/0.8/0.6/0.4/0.2，第六名及以后系数0.1）；不涉及排名则统一乘系数0.5。</li>
+                <li>2. 科研课题立项者加分系数可由指导老师分配（需提供书面证明）。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+            <div class="awards-grid">
+<!-- <div class="award-card">
+    <h3><i class="fas fa-ranking-star"></i> [综测奖项名称]</h3>
+    <div class="award-date">[获得时间]</div>
+    <div class="award-desc">
+        [综测分数/排名/加分项/评选说明]
+    </div>
+</div> -->
+
+            </div>
+            
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-text">
+                <p>© 2025 叶诚 大学经历记录 | 设计与制作：叶诚</p>
+                <p style="margin-top: 0.5rem; opacity: 0.8;">记录成长，不负韶华</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
